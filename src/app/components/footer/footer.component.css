@@ -49,3 +49,47 @@
 	justify-content: flex-end;
 	gap: 40px;
 }
+
+@media screen and (max-width: 1024px) {
+	.icons {
+		font-size: 16px;
+	}
+	.icons__set {
+		gap: 40px
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.icons {
+		font-size: 13px;
+	}
+	.icons__set {
+		gap: 20px
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.icons {
+		font-size: 11px;
+	}
+	.icons__set {
+		gap: 5px
+	}
+	.contact__data {
+		gap: 10px
+	}
+}
+
+
+@media screen and (max-width: 350px) {
+	.contact {
+		flex-direction: column;
+	}
+	.contact__data {
+		flex-direction: column;
+	}
+	.icons_set {
+		justify-content: space-between;
+		width: 100%;
+	}	
+}

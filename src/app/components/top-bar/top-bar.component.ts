@@ -1,8 +1,11 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/authService';
 import { IUser } from '../../interfaces/IUser';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { RegistrationComponent } from '../registration/registration.component';
+import { LoginComponent } from '../login/login.component';
 
 
 @Component({
@@ -14,6 +17,8 @@ export class TopBarComponent implements OnInit {
   public date: string | null;
   public time = '';
   user: IUser | null | undefined;
+
+  private modalService = inject(NgbModal);
 
   loginForm = new FormGroup({
     username: new FormControl('', [
@@ -84,7 +89,7 @@ export class TopBarComponent implements OnInit {
   }
 
   onRegister() {
-    console.log("Registered");
+    this.modalService.open(RegistrationComponent, {animation: true, centered: true })
   }
 
   onLogOut() {
@@ -92,10 +97,10 @@ export class TopBarComponent implements OnInit {
   }
 
   onSmallSubmit() {
-    console.log("Modal opened: Logged in");
+    this.modalService.open(LoginComponent, {animation: true, centered: true })
   }
 
   onSmallRegister() {
-    console.log("Modal opened: Registered");
+    this.modalService.open(RegistrationComponent, {animation: true, centered: true })
   }
 }

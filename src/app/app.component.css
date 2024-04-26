@@ -1,0 +1,14 @@
+.home__image {
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+  object-position: 50% 2%;
+}
+
+@media screen and (max-width: 480px) {
+  .home__image {
+    object-fit: cover;
+    width: 100%;
+    object-position: 50% 25%;
+  }
+}

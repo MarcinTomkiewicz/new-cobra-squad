@@ -14,6 +14,22 @@ export class AuthService {
     private afStore: AngularFirestore
   ) {}
 
+  createUser(email: string, password: string, name: string) {
+    this.afAuth.createUserWithEmailAndPassword(email, password)
+      .then((token) => {
+        this.afStore.collection('users').doc(`${token.user?.uid}`).set({
+          name: name,
+          email: email,
+          isAdmin: false,
+          isOnline: false
+        });
+        return this.afAuth.signInWithEmailAndPassword(email, password);
+      })
+      .catch((error) => {
+        // An error occurred
+      });
+  }
+
   login(email: string, password: string): Promise<firebase.default.auth.UserCredential> {
     return this.afAuth.signInWithEmailAndPassword(email, password); // returns a Promise of UserCredential
   }

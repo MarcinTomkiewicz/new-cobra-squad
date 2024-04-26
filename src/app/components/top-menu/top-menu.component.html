@@ -11,20 +11,65 @@
       <div class="menu__element"><a [routerLink]="['/']">Home</a></div>
     </div>
     <div class="menu__element--wrapper">
-      <div class="menu__element">Galeria</div>
+      <div class="menu__element">
+        <a [routerLink]="['/gallery']">Galeria</a>
+      </div>
     </div>
     <div class="menu__element--wrapper">
-      <div class="menu__element">Zloty</div>
+      <div class="menu__element"><a [routerLink]="['/events']">Akcje</a></div>
     </div>
     <div class="menu__element--wrapper">
       <div class="menu__element">
-        <a [routerLink]="['/about']">O nas</a></div>
+        <a [routerLink]="['/about']">O nas</a>
+      </div>
     </div>
     <div class="menu__element--wrapper">
-      <div class="menu__element">Kontakt</div>
+      <div class="menu__element">
+        <a [routerLink]="['/contact']">Kontakt</a>
+      </div>
     </div>
     <div class="menu__element--wrapper" *ngIf="user?.isAdmin">
-      <div class="menu__element">Panel admina</div>
+      <div class="menu__element">
+        <a [routerLink]="['/admin']">Panel admina</a>
+      </div>
     </div>
   </div>
+  <div
+    class="{{ !show ? 'hamburger__menu' : 'hamburger__menu open' }}"
+    (click)="handleShow(content)"
+  >
+    <div class="icon-E"></div>
+    <div class="icon-X"></div>
+  </div>
+  <ng-template #content let-offcanvas>
+    <div class="offcanvas-header">
+      <h4 style="color: rgb(211, 212, 206)">Cobra Squad</h4>
+      <button
+        type="button"
+        class="btn-close btn-close-white"
+        aria-label="Close"
+        (click)="handleClose()"
+      ></button>
+    </div>
+    <div class="offcanvas-body">
+      <div
+        class="d-flex flex-column justify-content-center align-items-start w-100 text-center"
+      >
+        <div class="menu__element"><a [routerLink]="['/']">Home</a></div>
+        <div class="menu__element">
+          <a [routerLink]="['/gallery']">Galeria</a>
+        </div>
+        <div class="menu__element"><a [routerLink]="['/events']">Akcje</a></div>
+        <div class="menu__element">
+          <a [routerLink]="['/about']">O nas</a>
+        </div>
+        <div class="menu__element">
+          <a [routerLink]="['/contact']">Kontakt</a>
+        </div>
+        <div class="menu__element" *ngIf="user?.isAdmin">
+          <a [routerLink]="['/admin']">Panel admina</a>
+        </div>
+      </div>
+    </div>
+  </ng-template>
 </div>
